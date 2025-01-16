@@ -20,5 +20,11 @@ public class Main {
             }
             customerThreads[i].start();
         }
+
+        Thread[] baristaThreads = new Thread[2];
+        for (int i = 0; i < baristaThreads.length; i++) {
+            baristaThreads[i] = new Thread(new Barista(coffeeShop, "Barista : " + i));
+            baristaThreads[i].start();
+        }
     }
 }
