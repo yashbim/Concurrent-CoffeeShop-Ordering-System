@@ -41,4 +41,8 @@ public class CoffeeShop {
         notifyAll();
         return order;
     }
+
+    public synchronized int getRemainingOrders(){
+        return coffeeOrders.size();
+    }
 }
