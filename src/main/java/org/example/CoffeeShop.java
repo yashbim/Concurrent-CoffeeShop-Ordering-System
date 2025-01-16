@@ -19,10 +19,26 @@ public class CoffeeShop {
                 wait();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
+                System.out.println(e.getMessage());
             }
         }
         coffeeOrders.add(order);
         notifyAll();
         System.out.println("Order added: " + order + "\nRemaining orders: " + coffeeOrders.size() + "\nMaximal orders: " + maxOrders);
+    }
+
+    public synchronized String makeOrder() {
+        while (coffeeOrders.isEmpty()) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                System.out.println(e.getMessage());
+                return null;
+            }
+        }
+        String order = coffeeOrders.remove();
+        notifyAll();
+        return order;
     }
 }
