@@ -24,7 +24,7 @@ public class CoffeeShop {
         }
         orderQueue.add(order);
         notifyAll();
-        System.out.println("Order added: " + order + "\nRemaining orders: " + orderQueue.size() + "\nMaximal orders: " + Capacity);
+        System.out.println("Order added: " + order + "\nRemaining orders: " + orderQueue.size());
     }
 
     public synchronized String makeOrder() {
